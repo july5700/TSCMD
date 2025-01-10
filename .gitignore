@@ -1,0 +1,15 @@
+
+
+# config file
+*.toml
+
+
+# Testfile
+try.py
+
+
+# pycharm related file
+.idea/
+
+# venv related file
+venv/
