@@ -262,6 +262,11 @@ def stop_cyclic_msg_CANFD():
     tsapp_delete_cyclic_msg_canfd(CANFD_Msg)
     tsapp_delete_cyclic_msg_can(CAN_Msg)
 
+def stop_cyclic_msg_CAN(CAN_Msg):
+    global CANFD_Msg
+    # tsapp_delete_cyclic_msg_canfd(CANFD_Msg)
+    tsapp_delete_cyclic_msg_can(CAN_Msg)
+
 def receive_can_message():
     ListCANMsg = (TLIBCAN*100)()        # CANFD接收报文数组
     CANSize = c_int32(100)                # CANFD接收报文数组大小
@@ -471,12 +476,12 @@ if __name__ == "__main__":
     # 枚举当前插在电脑上的能够使用的 CAN 设备数量
     ACount = c_int32(0)
     tsapp_enumerate_hw_devices(ACount)
-    logger.info("在线硬件设备数量有" , ACount)
+    print("在线硬件设备数量有" , ACount)
 
     PTLIBHWInfo = TLIBHWInfo()
     for i in range(ACount.value):
         tsapp_get_hw_info_by_index(i, PTLIBHWInfo)
-        logger.info(PTLIBHWInfo.FDeviceType,
+        print(PTLIBHWInfo.FDeviceType,
               PTLIBHWInfo.FDeviceIndex,
               PTLIBHWInfo.FVendorName.decode("utf8"),
               PTLIBHWInfo.FDeviceName.decode("utf8"),
@@ -497,7 +502,7 @@ if __name__ == "__main__":
     logger.info("a: 读取blf")
     logger.info("b: 获取blf中的数据")
     logger.info("c: 写blf，在此环境下需先读取blf")
-    logger.info("注意后续对硬件操作必须先连接硬件，但如果需要加载/卸载dbc文件需先加载/卸载dbc再开启硬件")
+    logger.info("注意后续对硬件操作必须先连接硬件，但如果需要加载/卸载dbc文件需先加载/卸载dbc再开启硬件\n")
 
     while True:
         key = input("请输入要执行的操作序号")
