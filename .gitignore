@@ -10,6 +10,7 @@ try.py
 
 # pycharm related file
 .idea/
+__pycache__/
 
 # venv related file
 venv/
