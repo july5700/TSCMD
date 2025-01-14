@@ -12,6 +12,7 @@ from TSMasterAPI.TSEnum import _TLIBApplicationChannelType, _TLIBBusToolDeviceTy
 AppName = b'20240409PythonCANFD'
 
 
+
 # CANFD报文定义
 CANFD_Msg = TLIBCANFD()
 CANFD_Msg.FIdxChn = 1

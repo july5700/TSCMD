@@ -16,6 +16,7 @@ Todo:
 mes = "CAN1,500k,0ms,592,02 01 00 0E 00 00 00 00"
 mes = "q"
 
+
 def message_classify(mes):
     message_code = 0
     mes_list = mes.split(',')
@@ -41,12 +42,6 @@ def message_classify(mes):
 
     logger.info(f"get message_code = {message_code}")
     return message_code
-
-# if __name__ == '__main__':
-#     print("hi")
-#     print(message_classify(mes))
-#
-# os._exit(0)
 
 
 shutdown_flag = False
@@ -114,12 +109,13 @@ def start_server(host, port):
             finally:
                 # 关闭连接
                 client_socket.close()
-                print("Connection closed.")
+                logger.info("Connection closed.")
                 if shutdown_flag:
                     break
     except KeyboardInterrupt:
         logger.info("\nServer shutting down.")
     finally:
+        logger.info("Server closed.")
         server_socket.close()
 
 
@@ -136,3 +132,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     start_server(args.host, args.port)
+    os._exit(0)
